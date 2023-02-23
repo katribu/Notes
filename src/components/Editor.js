@@ -1,0 +1,36 @@
+import React from "react";
+import Showdown from "showdown";
+import ReactMde from "react-mde";
+import "react-mde/lib/styles/css/react-mde-all.css";
+
+
+export default function Editor({currentNote,updateNote}){
+    // currentNote and updateNote are destructured props.
+    const [selectedTab, setSelectedTab] = React.useState("write");
+
+    const converter = new Showdown.Converter({
+        tables: true,
+        simplifiedAutoLink: true,
+        strikethrough: true,
+        tasklists: true,
+    })
+
+    
+    return (
+        <div>
+            <ReactMde
+                value={currentNote.body}
+                onChange={updateNote}
+                selectedTab={selectedTab}
+                onTabChange={setSelectedTab}
+                generateMarkdownPreview={markdown =>
+                Promise.resolve(converter.makeHtml(markdown))
+                }
+                minEditorHeight={80}
+                heightUnits="vh"
+            />
+           
+        </div>
+
+    )
+}
