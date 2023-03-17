@@ -1,3 +1,6 @@
+Note taking app, where you can create new notes, edit and delete them. Used an HTML markdown npm package. Followed a tutorial from Scrimba.
+Notes are saved to local storage.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
